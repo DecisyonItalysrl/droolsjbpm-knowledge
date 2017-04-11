@@ -15,7 +15,6 @@
 
 package org.kie.internal.security;
 
-import java.io.File;
 import java.net.URI;
 import java.security.AccessControlContext;
 import java.security.CodeSource;
@@ -48,7 +47,7 @@ public class KiePolicyHelper {
                 log.warn("Security manager not started. The KIE policy file configuration will be ignored. In order to use the policy file, a security manager needs to be started.");
             }
             if (policyFile != null && securityManager != null) {
-                URI resource = new File(policyFile).toURI();
+                URI resource = URI.create(policyFile);
                 Policy instance = Policy.getInstance("JavaPolicy", new URIParameter(resource));
                 PermissionCollection permissions = instance.getPermissions(new CodeSource(null, (Certificate[]) null));
                 ProtectionDomain[] pds = {new ProtectionDomain(new CodeSource(null, (Certificate[]) null), permissions)};
