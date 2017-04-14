@@ -9,8 +9,7 @@
     <version>6.3.0.Final</version>
   </parent>
 
-  <artifactId>kie-internal</artifactId>
-  <packaging>bundle</packaging><!-- bundle = jar + OSGi metadata -->
+  <artifactId>kie-internal</artifactId><!-- bundle = jar + OSGi metadata -->
 
   <name>KIE Internal</name>
   <description>The Drools and jBPM internal API which is NOT backwards compatible between releases.</description>
@@ -83,7 +82,8 @@
               org.kie.api.task,
               org.kie.api.task.model,
               =org.kie.scanner.*;resolution:=optional,
-              org.slf4j
+              org.slf4j,
+              orag.apache.http.*
             </Import-Package>
             <Export-Package>
               org.kie.internal.*
@@ -123,6 +123,10 @@
       <artifactId>jaxb-impl</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+       <groupId>org.apache.httpcomponents</groupId>
+      	<artifactId>httpclient</artifactId>
+    </dependency>
 
       <!-- test --> 
 
@@ -130,6 +134,11 @@
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+      	<groupId>org.apache.httpcomponents</groupId>
+      	<artifactId>httpcore</artifactId>
       </dependency>
   </dependencies>
   <version>6.3.1-decisyon-SNAPSHOT</version>
