@@ -194,5 +194,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <version>7.5.0-decisyon-SNAPSHOT</version>
+  <version>7.5.0.Final-decisyon</version>
 </project>
