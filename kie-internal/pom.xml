@@ -9,8 +9,7 @@
     <version>7.5.0.Final</version>
   </parent>
 
-  <artifactId>kie-internal</artifactId>
-  <packaging>bundle</packaging><!-- bundle = jar + OSGi metadata -->
+  <artifactId>kie-internal</artifactId><!-- bundle = jar + OSGi metadata -->
 
   <name>KIE :: Internal</name>
   <description>The Drools and jBPM internal API which is NOT backwards compatible between releases.</description>
@@ -98,7 +97,8 @@
               org.kie.scanner;resolution:=optional,
               org.osgi.framework,
               org.osgi.util.tracker,
-              org.slf4j
+              org.slf4j,
+              org.apache.http.*
             </Import-Package>
             <Export-Package>
               org.kie.internal.*
@@ -126,9 +126,23 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>commons-logging</artifactId>
+          <groupId>commons-logging</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.core</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
@@ -180,4 +194,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <version>7.5.0-decisyon-SNAPSHOT</version>
 </project>
